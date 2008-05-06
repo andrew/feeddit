@@ -1,0 +1,32 @@
+/* Feeddit CSS */
+/* TODO better formatting and compress with asset packager */
+body{background:#eee;font:normal normal 0.9em "Lucida Grande", Geneva, Arial, Verdana, sans-serif;}
+#wrapper{width:895px;margin:50px auto 0 auto;}
+#header{position:absolute;}
+#content{height:595px;background:url(/images/back.png) no-repeat;padding:30px;margin:0 0 5px 0;}
+#footer{font-size:0.7em;color:#777;padding:0 10px 30px 0;}
+#footer a{color:#777;text-decoration:none;}
+#footer a:hover{color:#555;text-decoration:underline;}
+.left{float:left;}
+.right{float:right;}
+a img{border:none;}
+#logo{width:128px; height:128px;background:url(/images/Feeds.png) no-repeat;float:left;margin:0 15px 0 0;}
+#title{margin:0 0 0 15px;border-bottom:1px solid #eee;float:left;width:550px;}
+#title h1{margin:10px 0;color:#222;font-weight:bold;}
+#title .note{font-size:10px;color:#999;font-weight:normal;}
+#screen{width:438px;height:390px;overflow:hidden;position:absolute;margin:0 0 0 410px;top:-70px;}
+#tagline{background:url(/images/tagline.png) no-repeat;width:415px;height:86px;position:absolute;top:85px;text-align:center;}
+#tagline p{display:none;}
+#subscribe{margin:115px 0 0 0;}
+#blurb{clear:both; position:absolute; top:345px; width:835px;}
+.item{width:20%;float:left;margin:0 20px 0 10px;}
+.item h2, .item p{color:#333;}
+.item b, .item a, .item a:visited{color:#4578B1; font-weight:bold;}
+h2{font-size:1.1em;margin:2px 0;padding:0;}
+p{margin:3px 0;}
+#legal{clear:both;color:#aaa;font-size:0.7em;padding:30px 10px 0 10px; position:absolute; width:835px; top:620px; }
+#legal a{color:#aaa;}
+#legal a:hover{color:#888;}
+#cclogos{float:left;padding:2px 8px 10px 0;}
+#logopadder{width:130px; height:50px; float:left;}
+#middle{position:absolute; top:160px; width:800px; margin:0 0 0 10px; font-size:0.8em;}
