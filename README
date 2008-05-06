@@ -4,8 +4,9 @@ Feeddit
 
 TODOs
 
- - remove resource feeder and simply helpful infavour of atom.builder
-
+- remove resource feeder and simply helpful infavour of atom.builder
+- add support for topics
+- add caching
 
 License
 
