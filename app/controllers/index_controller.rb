@@ -19,6 +19,7 @@ class IndexController < ApplicationController
     end
   end
 
+  protected
   def find_diggs
     response = open("http://services.digg.com/stories/popular?count=100&appkey=http%3A%2F%2Ffeeddit.com", "User-Agent" => "Diggfeedr/1").read 
     @diggs = []
