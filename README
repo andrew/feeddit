@@ -8,7 +8,6 @@ Github: http://github.com/andrew/feeddit
 
 TODOs
 
-- remove resource feeder and simply helpful infavour of atom.builder
 - add support for topics
 - add caching
 
