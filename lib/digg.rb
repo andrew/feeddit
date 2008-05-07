@@ -1,5 +1,7 @@
 class Digg
   
+  # TODO Combine or replace with http://digg-ruby.googlecode.com/files/digg.rb
+  
   attr :title, true
   attr :description, true
   attr :user_name, true
