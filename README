@@ -2,6 +2,10 @@ Feeddit
 
 - An improvement to the standard rss feed on Digg.com
 
+Homepage: http://feeddit.com
+Created by: Andrew Nesbitt (http://teabass.com)
+Github: http://github.com/andrew/feeddit
+
 TODOs
 
 - remove resource feeder and simply helpful infavour of atom.builder
