@@ -1,5 +1,7 @@
 require 'deprec/recipes'
 
+# TODO upgrade to work with capistrano 2.3.0
+
 # =============================================================================
 # ROLES
 # =============================================================================
@@ -28,7 +30,7 @@ set :deploy_to, "/var/www/apps/#{application}"
 
 # XXX we may not need this - it doesn't work on windows
 set :user, "andrew"
-set :repository, 
+set :repository, "git://github.com/andrew/feeddit.git"
 set :rails_env, "production"
 
 # Automatically symlink these directories from current/public to shared/public.
