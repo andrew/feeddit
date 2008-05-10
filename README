@@ -2,10 +2,16 @@ Feeddit
 
 - An improvement to the standard rss feed on Digg.com
 
+Homepage: http://feeddit.com
+Created by: Andrew Nesbitt (http://teabass.com)
+Github: http://github.com/andrew/feeddit
+
 TODOs
 
- - remove resource feeder and simply helpful infavour of atom.builder
-
+- add support for topics
+- add caching
+- pretty 404 and 500 pages
+- iPhone feed browsing (ala diggriver.com)
 
 License
 
