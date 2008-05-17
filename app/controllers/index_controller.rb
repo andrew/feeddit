@@ -1,12 +1,18 @@
 class IndexController < ApplicationController
   
-  caches_page :index, :format => :html
-  caches_action :index, :format => :atom, :cache_path => {:day => Date.today.to_s, :hour => Time.now.hour}
+  caches_action :feed, :cache_path => {:time => Time.now.hour / 15}
+  caches_page :index
+  after_filter :clear_cache, :only => :feed
   
   def index
     respond_to do |format|
       format.html 
-      format.atom { find_diggs }
+    end
+  end
+  
+  def feed
+    respond_to do |format|
+      format.atom { @stories = Digg.new.stories }
     end
   end
 
@@ -32,30 +38,10 @@ class IndexController < ApplicationController
     end
   end
 
-  def find_diggs(topic)
-    # TODO move this into digg library file
-    response = open("http://services.digg.com/stories/#{ params[:topic].blank? ? 'popular' : 'topic/' + params[:topic] }?count=100&appkey=http%3A%2F%2Ffeeddit.com", 
-                    "User-Agent" => "Diggfeedr/1").read 
-    
-    
-    @diggs = []
-    REXML::Document.new(response).elements.each("stories/story") do |story| 
-      @diggs << Digg.new( story.elements[1].text,
-                          story.elements[2].text,
-                          story.elements[3].attributes["name"],
-                          story.elements[3].attributes["icon"],
-                          story.elements[4].attributes["name"],
-                          story.elements[4].attributes["short_name"],
-                          story.elements[5].attributes["name"],
-                          story.elements[5].attributes["short_name"],
-                          story.attributes["status"], 
-                          story.attributes["href"], 
-                          story.attributes["comments"], 
-                          story.attributes["submit_date"], 
-                          story.attributes["promote_date"], 
-                          story.attributes["id"], 
-                          story.attributes["diggs"],
-                          story.attributes["link"])           
+  def clear_cache
+    for hour in 0..3 do
+      next if hour == Time.now.hour / 15
+      expire_action(:hour => hour)
     end
   end
 end
