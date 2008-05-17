@@ -20,6 +20,8 @@ class Digg
   attr :promote_date, true
   attr :feed_description
   
+  # TODO add thumbnails
+  
   def initialize (title = nil, 
                   description = nil, 
                   user_name = nil, 
