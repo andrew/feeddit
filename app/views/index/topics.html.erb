@@ -1,0 +1,7 @@
+Here is a list of topics to subscribe to:
+
+<ul id='topics-list'>
+<% for topic in @topics %>
+    <li><%= link_to topic.name, "/topics/#{topic.short_name}.atom" %></li>
+<% end %>
+</ul>
