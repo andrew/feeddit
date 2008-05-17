@@ -1,6 +1,6 @@
-atom_feed(:schema_date => 2008, :root_url => @root_url, :url => @url) do |feed|
+atom_feed(:schema_date => 2008, :root_url => root_path, :url => atom_path) do |feed|
   feed.title 'Feeddit'
-  feed.updated @updated_at
+  feed.updated Time.now
 
   for digg in @diggs
     feed.entry(digg, :url => digg.link) do |entry|
