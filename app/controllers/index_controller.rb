@@ -16,6 +16,8 @@ class IndexController < ApplicationController
     end
   end
 
+  # random comment
+
   def topics
     respond_to do |format|
       format.html { find_topics }
