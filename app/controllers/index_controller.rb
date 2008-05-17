@@ -1,6 +1,7 @@
 class IndexController < ApplicationController
   
   caches_page :index, :format => :html
+  caches_action :index, :format => :atom, :cache_path => {:day => Date.today.to_s, :hour => Time.now.hour}
   
   def index
     respond_to do |format|
