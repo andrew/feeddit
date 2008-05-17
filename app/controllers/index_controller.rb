@@ -1,6 +1,7 @@
 class IndexController < ApplicationController
   
   caches_page :index, :format => :html
+  caches_action :index, :format => :atom, :cache_path => {:day => Date.today.to_s, :hour => Time.now.hour}
   
   def index
     respond_to do |format|
@@ -9,11 +10,34 @@ class IndexController < ApplicationController
     end
   end
 
-  protected
+  def topics
+    respond_to do |format|
+      format.html { find_topics }
+      format.atom { find_diggs(params[:topic]) }
+    end
+  end
 
-  def find_diggs
+  protected
+  
+  def find_topics
+    # TODO also prolly wants to be moved into the library
+    
+    response = open("http://services.digg.com/topics/?appkey=http%3A%2F%2Ffeeddit.com", # TODO extract the appkey to an initializer
+                    "User-Agent" => "Diggfeedr/1").read 
+    
+    @topics = []
+    REXML::Document.new(response).elements.each("topics/topic") do |topic| 
+      @topics << Topic.new( topic.attributes["name"],
+                          topic.attributes["short_name"])           
+    end
+  end
+
+  def find_diggs(topic)
     # TODO move this into digg library file
-    response = open("http://services.digg.com/stories/popular?count=100&appkey=http%3A%2F%2Ffeeddit.com", "User-Agent" => "Diggfeedr/1").read 
+    response = open("http://services.digg.com/stories/#{ params[:topic].blank? ? 'popular' : 'topic/' + params[:topic] }?count=100&appkey=http%3A%2F%2Ffeeddit.com", 
+                    "User-Agent" => "Diggfeedr/1").read 
+    
+    
     @diggs = []
     REXML::Document.new(response).elements.each("stories/story") do |story| 
       @diggs << Digg.new( story.elements[1].text,
@@ -34,5 +58,4 @@ class IndexController < ApplicationController
                           story.attributes["link"])           
     end
   end
-
 end

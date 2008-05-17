@@ -4,6 +4,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.index '/index.:format', :controller => 'index', :action => 'index'
 
+  map.topics '/topics/:topic.:format', :controller => 'index', :action => 'topics'
+
   map.root :controller => 'index'
 
   map.connect ':action', :controller => 'index'
