@@ -1,5 +1,3 @@
-/* Feeddit CSS */
-/* TODO better formatting and compress with asset packager */
 body{background:#eee;font:normal normal 0.9em "Lucida Grande", Geneva, Arial, Verdana, sans-serif;}
 #wrapper{width:895px;margin:50px auto 0 auto;}
 #header{position:absolute;}
@@ -12,7 +10,8 @@ body{background:#eee;font:normal normal 0.9em "Lucida Grande", Geneva, Arial, Ve
 a img{border:none;}
 #logo{width:128px; height:128px;background:url('/images/Feeds.png') no-repeat;float:left;margin:0 15px 0 0;}
 #title{margin:0 0 0 15px;border-bottom:1px solid #eee;float:left;width:550px;}
-#title h1{margin:10px 0;color:#222;font-weight:bold;}
+#title h1{margin:10px 0;color:#222;font-weight:bold; font-size:3.0em; line-height:0.5em;}
+h1 a, h1 a:visited{color:#000; text-decoration:none;}
 #title .note{font-size:10px;color:#999;font-weight:normal;}
 #screen{width:438px;height:390px;overflow:hidden;position:absolute;margin:0 0 0 410px;top:-70px;}
 #tagline{background:url('/images/tagline.png') no-repeat;width:415px;height:86px;position:absolute;top:85px;text-align:center;}
@@ -21,7 +20,7 @@ a img{border:none;}
 #blurb{clear:both; position:absolute; top:345px; width:835px;}
 .item{width:20%;float:left;margin:0 20px 0 10px;}
 .item h2, .item p{color:#333;}
-.item b, .item a, .item a:visited{color:#4578B1; font-weight:bold;}
+.item b, a, a:visited{color:#4578B1; font-weight:bold;}
 h2{font-size:1.1em;margin:2px 0;padding:0;}
 p{margin:3px 0;}
 #legal{clear:both;color:#aaa;font-size:0.7em;padding:30px 10px 0 10px; position:absolute; width:835px; top:620px; }
@@ -32,18 +31,8 @@ p{margin:3px 0;}
 #middle{position:absolute; top:160px; width:800px; margin:0 0 0 10px; font-size:0.8em;}
 #topics-list{ margin:20px 0 0 0; padding:0; }
 #topics-list li{ list-style:none; }
-#topics-list a{
-  background:#F6F6F6;
-  display:block; 
-  text-decoration:none; 
-  color:#555; 
-  background:; 
-  border:1px solid #ddd; 
-  width:138px; 
-  float:left;  
-  text-align:center;
-  margin:3px 5px;
-  padding:4px 5px;
-  height:25px;
-  }
+#topics-list a{background:#F6F6F6;display:block; text-decoration:none; color:#555; border:1px solid #ddd; width:138px; float:left; text-align:center;margin:3px 5px;padding:4px 5px;height:25px;}
 #topics-list a:hover{font-weight:bold; background:#FBFBC3;}
+.opensource{width:500px; margin:0 auto;}
+.opensource h2, p{margin:0 0 10px 0;}
+.opensource .download{background:#eee; border:1px solid #ddd; padding:5px;}
