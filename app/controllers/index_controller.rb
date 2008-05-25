@@ -1,17 +1,15 @@
 class IndexController < ApplicationController
   
-  caches_action :feed, :cache_path => {:time => Time.now.hour / 15}
-  caches_page :index, :topics
-  after_filter :clear_cache, :only => :feed
+  caches_action :index, :format => :atom, :cache_path => {:time => Time.now.hour / 15}
+  caches_action :topics, :format => :atom, :cache_path => {:time => Time.now.hour / 15}
+  caches_page :index, :format => :html
+  caches_page :topics, :format => :html
+  after_filter :clear_cache, :only => :index
+  after_filter :clear_cache, :only => :topics
   
   def index
     respond_to do |format|
       format.html 
-    end
-  end
-  
-  def feed
-    respond_to do |format|
       format.atom { @stories = Digg.new.stories('stories/popular', :count => 100) }
     end
   end

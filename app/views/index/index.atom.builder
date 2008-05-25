@@ -2,14 +2,14 @@ atom_feed(:schema_date => 2008, :root_url => root_path, :url => atom_path) do |f
   feed.title 'Feeddit'
   feed.updated Time.now
 
-  for digg in @diggs
-    feed.entry(digg, :url => digg.link) do |entry|
-      entry.title digg.title
+  for story in @stories
+    feed.entry(story, :url => story.link) do |entry|
+      entry.title story.title
       entry.author do |author|
-        author.name digg.user_name
-        author.uri "http://digg.com/users/#{digg.user_name}"
+        author.name story.user.name
+        author.uri "http://digg.com/users/#{story.user.name}"
       end
-      entry.content digg.feed_description, :type => 'html'
+      entry.content "#{story.description}<br /><br /><a href='#{story.href}'>#{story.diggs} Diggs</a> and <a href='#{story.href}'>#{story.comments} Comments</a> in <a href='http://digg.com/#{story.topic.short_name}'>#{story.topic.name}</a> - Submitted by <a href='http://digg.com/users/#{story.user.name}'>#{story.user.name}</a> - <a href='http://duggmirror.com#{story.href.to_s[15..story.href.to_s.size]}'>Mirror</a>", :type => 'html'
     end
   end
 end
