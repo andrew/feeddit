@@ -1,5 +1,5 @@
 atom_feed(:schema_date => 2008, :root_url => root_path, :url => atom_path) do |feed|
-  feed.title "Feeddit Topic: '#{params[:topic]}'" # TODO use topic name rather than shortname
+  feed.title "Feeddit Topic: '#{params[:topic].titleize}'"
   feed.updated Time.now
 
   for story in @stories
