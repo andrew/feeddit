@@ -1,7 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
-  map.rss '/feed.rss', :controller => 'index', :action => 'index', :format => 'atom' # legacy routes
-  map.atom '/feed.atom', :controller => 'index', :action => 'index', :format => 'atom' # legacy routes
-  map.topic '/topics/:topic.atom', :controller => 'index', :action => 'topics', :format => 'atom'
-  map.root :controller => 'index'
-  map.connect ':action', :controller => 'index'
+  map.with_options :controller => 'index' do |index|
+    index.rss '/feed.rss', :action => 'index', :format => 'atom' # legacy routes
+    index.atom '/feed.atom', :action => 'index', :format => 'atom' # legacy routes
+    index.topic '/topics/:topic.atom', :action => 'topics', :format => 'atom'
+    index.root 
+    index.connect ':action'
+  end
 end
