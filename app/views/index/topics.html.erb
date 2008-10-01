@@ -1,5 +1,3 @@
-Get the feed of an individual topic on <b>Digg</b>, with the usual benefits of Feeddit, direct links, longer feeds and more meta data, just pick from the list of topics below: 
-
 <ul id='topics-list'>
 <% for topic in @topics %>
     <li><%= link_to topic.name, topic_path(:topic => topic.short_name) %></li> 
