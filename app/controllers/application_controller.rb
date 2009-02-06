@@ -1,3 +1,3 @@
 class ApplicationController < ActionController::Base
-  session :off
+  session :disabled => true
 end
