@@ -11,6 +11,8 @@ def is_excluded(file)
   end
 end
 
+# removes all cached html and atom files 
+
 Find.find("../public") do |f|
   if File.file?(f) and f =~ /\w.(html|atom)/ 
     rm f unless is_excluded(f)
