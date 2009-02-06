@@ -3,13 +3,15 @@
 <div id="homepage">
     <div class='tagline'>
     	<p><span>The Ultimate Digg News Feed (Digg just got even better)</span></p>
-    	<a href="http://feeds.feedburner.com/Diggfeedr"><img src="/images/subscribe.png" id="subscribe" alt="Subscribe Today" /></a>
-    	<br /><a href='/topics'>or get individual topics here</a>
+    	
+    	<%= link_to image_tag('subscribe.png', :id => 'subscribe'), "http://feeds.feedburner.com/Diggfeedr" %>
+    	
+    	<br /><%= link_to "or get individual topics here", :action => 'topics' %>
     </div>
     <div id="blurb">
     	<div class="item">
     		<h2>What is Feeddit?</h2>
-    		<p>Feeddit is an improvement to the standard rss feed on <a href="http://digg.com" title="Digg">Digg.com</a>, it's longer, fatter and more awesome.</p>
+    		<p>Feeddit is an improvement to the standard rss feed on <%= link_to "Digg.com", "http://digg.com" %>, it's longer, fatter and more awesome.</p>
     	</div>
     	<div class="item">
     		<h2>Direct Links</h2>
@@ -21,7 +23,7 @@
     	</div>
     	<div class="item">
     		<h2>Open Source</h2>
-    		<p>Feeddit is 100% free and open source, anyone can get the code under an MIT License. <a href='/opensource'>Grab it here!</a></p>
+    		<p>Feeddit is 100% free and open source, anyone can get the code under an MIT License. <%= link_to "Grab it here!", :action => "opensource" %></p>
     	</div>
     </div>
 </div>

@@ -12,39 +12,39 @@
 </head>
 <body>
 	<% if flash[:error] -%> 
-	<div id="flash-errors" class="flash" ><%= flash[:error] %></div>
+	    <div id="flash-errors" class="flash" ><%= flash[:error] %></div>
 	<% end -%>
 	<% if flash[:notice] -%>
-	<div id="flash-notice" class="flash" ><%= flash[:notice] %></div>
+	    <div id="flash-notice" class="flash" ><%= flash[:notice] %></div>
 	<% end -%>
 
 	<div id="wrapper">
 		<div id="content">
 			<div id="header">
 				<div id="logo"></div>
-				<div id="title"><h1><a href='/'>Feeddit</a> <span class="note">Formerly DiggFeedr</span></h1></div>
+				<div id="title"><h1><%= link_to "Feeddit", root_path %> <span class="note">Formerly DiggFeedr</span></h1></div>
 			</div>
 			<div id='middle'>
 				<%= yield %>
 			</div>
 			<div id="legal">
 				<div id="cclogos">
-					<a href="http://creativecommons.org" title="Creative Commons"><img src="/images/cc2.jpg" alt="Creative Commons" /></a> 			 		
-					<a href="http://creativecommons.org/licenses/publicdomain" title="Public Domain License"><img src="/images/ccpd.jpg" alt="Public Domain" /></a>
+				    <%= link_to image_tag('cc2.jpg'), "http://creativecommons.org", :title => 'Creative Commons' %>
+					<%= link_to image_tag('ccpd.jpg'), "http://creativecommons.org/licenses/publicdomain", :title => 'Public Domain License' %>			 		
 					</div>
-				<p>User-posted content, unless source quoted, is licensed under a <a href="http://creativecommons.org/licenses/publicdomain/">Creative Commons Public Domain License</a>.</p>
+				<p>User-posted content, unless source quoted, is licensed under a <%= link_to "Creative Commons Public Domain License", "http://creativecommons.org/licenses/publicdomain/" %>.</p>
 				<div class="right">
-					<a href="http://feeds.feedburner.com/Diggfeedr" title="Subscribe"><img src="/images/feed.gif" alt="feed" /></a> 
-					<a href="http://del.icio.us/post?url=http%3A%2F%2Ffeeddit.com&amp;title=Feeddit%20-%20The%20Ultimate%20Digg%20RSS%20Feed" title="Submit to Del.icio.us"><img src="/images/delicious.gif" alt="Del.icio.us" /></a> 
-					<a href="http://digg.com/submit?phase=2&amp;url=http%3A%2F%2Ffeeddit.com&amp;title=Feeddit%20-%20The%20Ultimate%20Digg%20RSS%20Feed" title="Submit to Digg"><img src="/images/digg.gif" alt="Digg" /></a> 
-					<a href="http://www.stumbleupon.com/submit?url=http%3A%2F%2Ffeeddit.com&amp;title=Feeddit%20-%20The%20Ultimate%20Digg%20RSS%20Feed" title="Submit to StumbleUpon"><img src="/images/stumbleUpon.gif" alt="StumbleUpon" /></a>
+				    <%= link_to image_tag('feed.gif'), "http://feeds.feedburner.com/Diggfeedr", :title => 'Subscribe' %>
+					<%= link_to image_tag('delicious.gif'), "http://del.icio.us/post?url=http%3A%2F%2Ffeeddit.com&amp;title=Feeddit%20-%20The%20Ultimate%20Digg%20RSS%20Feed", :title => "Submit to Del.icio.us" %>
+					<%= link_to image_tag('digg.gif'), "http://digg.com/submit?phase=2&amp;url=http%3A%2F%2Ffeeddit.com&amp;title=Feeddit%20-%20The%20Ultimate%20Digg%20RSS%20Feed", :title => "Submit to Digg" %> 
+					<%= link_to image_tag('stumbleUpon.gif'), "http://www.stumbleupon.com/submit?url=http%3A%2F%2Ffeeddit.com&amp;title=Feeddit%20-%20The%20Ultimate%20Digg%20RSS%20Feed", :title => "Submit to StumbleUpon" %>
 				</div>
-				<p>Digg&trade; and Digg Logo and Designs are trademarks of <a href="http://digg.com">Digg Inc</a></p>
+				<p>Digg&trade; and Digg Logo and Designs are trademarks of <%= link_to "Digg Inc", "http://digg.com" %></p>
 			</div>
 
 		</div>
 		<div id="footer">
-			<div class="right">Designed and Coded by <a href="http://teabass.com">Andrew Nesbitt</a></div>
+			<div class="right">Designed and Coded by <%= link_to "Andrew Nesbitt", "http://teabass.com" %></div>
 		</div>
 	</div>
 	<script type="text/javascript" src="http://include.reinvigorate.net/re_.js"></script>
