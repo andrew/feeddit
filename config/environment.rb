@@ -44,11 +44,6 @@ Rails::Initializer.run do |config|
   # See Rails::Configuration for more options
 end
 
-# for exception_notifier plugin
-ExceptionNotifier.exception_recipients = %w(andrewnez@gmail.com)
-ExceptionNotifier.sender_address = %("Feeddit Error" <errors@feeddit.com>)
-ExceptionNotifier.email_prefix = "[FEEDDIT ERROR] "
-
 # Add new inflection rules using the following format 
 # (all these examples are active by default):
 # Inflector.inflections do |inflect|
