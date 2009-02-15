@@ -14,7 +14,7 @@ Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here
   
   # Skip frameworks you're not going to use (only works if using vendor/rails)
-  config.frameworks -= [ :action_web_service, :active_record ]
+  config.frameworks -= [ :action_web_service, :active_record, :active_resource ]
 
   # Only load the plugins named here, by default all plugins in vendor/plugins are loaded
   # config.plugins = %W( exception_notification ssl_requirement )
