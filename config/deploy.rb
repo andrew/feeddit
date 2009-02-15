@@ -27,7 +27,7 @@ set :deploy_via, :remote_cache
 set :application, "feeddit"
 set :repository,  "git@github.com:andrew/feeddit.git"
  
-set :deploy_to, "/var/www/#{application}"
+set :deploy_to, "/home/andrew/apps/#{application}"
 set :user, "andrew"
  
 set :scm, :git
