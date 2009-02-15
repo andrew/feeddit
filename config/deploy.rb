@@ -19,11 +19,13 @@
 
 
 default_run_options[:pty] = true
+ssh_options[:forward_agent] = true
+ 
 set :scm_verbose, true
  
 set :branch, "master"
 set :deploy_via, :remote_cache
- 
+
 set :application, "feeddit"
 set :repository,  "git@github.com:andrew/feeddit.git"
  
