@@ -18,3 +18,7 @@ Find.find("../public") do |f|
     rm f unless is_excluded(f)
   end
 end
+
+# example crontab 
+# # m h  dom mon dow   command
+# 0,15,30,45  *  *   *   *     ruby -C /home/andrew/apps/feeddit/current/lib cleanup.rb
