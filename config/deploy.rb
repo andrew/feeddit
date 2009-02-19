@@ -34,7 +34,7 @@ set :user, "andrew"
  
 set :scm, :git
 
-set :domain, "208.75.86.40"
+set :domain, "67.207.146.229"
  
 role :app, domain
 role :web, domain
@@ -51,4 +51,8 @@ end
  
 namespace :deploy do
   %w(start restart stop).each { |name| task name, :roles => :app do passenger.restart end }
+end
+
+on :start do
+    `ssh-add`
 end
