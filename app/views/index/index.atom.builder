@@ -1,6 +1,6 @@
 atom_feed(:schema_date => 2008, :root_url => root_path, :url => atom_path) do |feed|
   feed.title 'Feeddit'
-  feed.updated Time.now.xmlschema
+  feed.updated Time.at(@stories.timestamp.to_i)
 
   for story in @stories
     feed.entry(story, :url => story.link) do |entry|
