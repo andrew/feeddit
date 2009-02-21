@@ -1,4 +1,4 @@
-atom_feed(:schema_date => 2008, :root_url => root_path, :url => atom_path) do |feed|
+atom_feed(:schema_date => 2008, :root_url => root_url, :url => atom_url) do |feed|
   feed.title "Feeddit Topic: '#{params[:topic].titleize}'"
   feed.updated Time.at(@stories.timestamp.to_i)
 
