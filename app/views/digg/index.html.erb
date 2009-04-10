@@ -1,0 +1,19 @@
+<%= link_to "popular", digg_popular_path %>
+
+<%= link_to "upcoming", digg_upcoming_path %>
+
+<h2>Popular by topic</h2>
+
+<ul id='topics-list'>
+<% for topic in @topics %>
+    <li><%= link_to topic.name, digg_topic_path(:topic => topic.short_name) %></li> 
+<% end %>
+</ul>
+
+<h2>Upcoming by topic</h2>
+
+<ul id='topics-list'>
+<% for topic in @topics %>
+    <li><%= link_to topic.name, digg_upcoming_topic(:topic => topic.short_name) %></li> 
+<% end %>
+</ul>
