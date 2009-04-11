@@ -1,3 +1,3 @@
 class ApplicationController < ActionController::Base
-  session :disabled => true
+  helper :all
 end
