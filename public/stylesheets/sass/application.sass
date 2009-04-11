@@ -1,6 +1,32 @@
-body
+@import reset.sass
+
+strong, b
+  :font-weight bold
+
+em, i
+  :font-style italic
+
+h1,h2,h3,h4
+  :font-weight bold
+
+h3
+  :font-size 1.2em
+  :margin 1em 0
+
+p
+  :margin 1em 0
+
+ul, ol
+  :margin 1em 0
+  :padding-left 40px
+  :list-style disc outside
+
+ol
+  :list-style-type decimal
+
+html,body
   :background #eee
-  :font normal normal 0.9em "Lucida Grande", Geneva, Arial, Verdana, sans-serif
+  :font 15px "Lucida Grande", Geneva, Arial, Verdana, sans-serif
 
 
 h2
@@ -36,7 +62,7 @@ a
 
 
 #footer
-  :font-size 0.7em
+  :font-size 0.65em
   :color #777
   :padding 0 10px 30px 0
   :clear both
@@ -72,14 +98,14 @@ h1 a
     :margin 10px 0
     :color #222
     :font-weight bold
-    :font-size 2.8em
+    :font-size 2.5em
     :line-height 0.5em
 
 
 #legal
   :clear both
   :color #aaa
-  :font-size 0.7em
+  :font-size 0.65em
   :padding 15px 10px 0 0
 
   a
@@ -193,8 +219,8 @@ h1 a
     :color #888
     :text-shadow 1px 1px 1px #fff
     :padding 10px 0
-    :-webkit-box-shadow 1px 1px 1px #aaa
     :background #eee
+    :border 1px solid #ddd
     
     &:hover
       :color #555
@@ -209,11 +235,16 @@ h1 a
     
     &.popular
       :width 99px
-
       :-webkit-border-bottom-left-radius 10px
       :-webkit-border-top-left-radius 10px
+      :-moz-border-radius-topleft 10px
+      :-moz-border-radius-bottomleft 10px
+      :border-right none
     
     &.upcoming
       :width 110px
       :-webkit-border-bottom-right-radius 10px
       :-webkit-border-top-right-radius 10px
+      :-moz-border-radius-topright 10px
+      :-moz-border-radius-bottomright 10px
+      :border-left none
