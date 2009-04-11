@@ -113,7 +113,7 @@ development:
   # performance information on the last 100 transactions you have 
   # executed since starting the mongrel.  to view this data, go to 
   # http://localhost:3000/newrelic
-  developer: true
+  developer: false
 
 test:
   <<: *default_settings
