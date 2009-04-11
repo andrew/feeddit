@@ -4,3 +4,4 @@ tmp/**/*
 doc/api
 doc/app
 tmp/restart.txt
+public/stylesheets/*.css
