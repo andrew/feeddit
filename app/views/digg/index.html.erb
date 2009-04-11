@@ -1,19 +1,22 @@
-<%= link_to "popular", digg_popular_path %>
+<div class='switch'>
+    <%= link_to "Upcoming", digg_upcoming_path, :class => "upcoming #{'active' if upcoming?}" %> 
+    <%= link_to "Popular", digg_path, :class => "popular #{'active' unless upcoming?}" %> 
+</div>
 
-<%= link_to "upcoming", digg_upcoming_path %>
-
-<h2>Popular by topic</h2>
-
-<ul id='topics-list'>
-<% for topic in @topics %>
-    <li><%= link_to topic.name, digg_topic_path(:topic => topic.short_name) %></li> 
-<% end %>
-</ul>
-
-<h2>Upcoming by topic</h2>
+<p><%= link_to "All #{upcoming? ? 'Upcoming' : 'Popular'} Feed", (upcoming? ? digg_upcoming_feed_path : digg_popular_path ) %>
+</p>
+<h2><%= upcoming? ? 'Upcoming' : 'Popular' %> stories by topic</h2>
 
 <ul id='topics-list'>
 <% for topic in @topics %>
-    <li><%= link_to topic.name, digg_upcoming_topic(:topic => topic.short_name) %></li> 
+    <li>
+        <% if upcoming? %>
+            <%= link_to "<span>#{topic.name}</span>", digg_upcoming_topic_path(:topic => topic.short_name) %>
+        <% else %>
+            <%= link_to topic.name, digg_topic_path(:topic => topic.short_name) %>
+        <% end %>
+    </li> 
 <% end %>
 </ul>
+
+<!-- :diggbar => params[:diggbar] -->

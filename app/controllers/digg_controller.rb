@@ -1,33 +1,27 @@
 class DiggController < ApplicationController
-  
-  def popular
-    respond_to do |format|
-      format.atom { @stories = Digg.new.stories('stories/popular', :count => 100) }
-    end
-  end
-  
-  def topics 
+
+  def index
     respond_to do |format|
       format.html { @topics = Digg.new.topics }
+      format.atom { @stories = Digg.new.stories("stories/#{upcoming_or_popular}", :count => 100) }
     end
   end
   
   def topic
     respond_to do |format|
-      format.atom { @stories = Digg.new.stories("stories/topic/#{params[:topic]}/popular", :count => 100) }
+      format.atom { @stories = Digg.new.stories("stories/topic/#{params[:topic]}/#{upcoming_or_popular}", :count => 100) }
     end
   end
+    
+  private
   
-  def upcoming
-    respond_to do |format|
-      format.atom { @stories = Digg.new.stories('stories/upcoming', :count => 100) }
-    end
+  helper_method :upcoming?
+  def upcoming?
+    params[:upcoming]
   end
   
-  def upcoming_topic 
-    respond_to do |format|
-      format.atom { @stories = Digg.new.stories("stories/topic/#{params[:topic]}/upcoming", :count => 100) }
-    end
+  def upcoming_or_popular
+    upcoming? ? 'upcoming' : 'popular'
   end
   
 end

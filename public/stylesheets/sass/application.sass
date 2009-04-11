@@ -117,6 +117,7 @@ h1 a
 #topics-list
   :margin 20px 0 0 0
   :padding 0
+  :clear both
 
   li
     :list-style none
@@ -176,3 +177,43 @@ h1 a
 #middle
   :clear both
   :font-size 0.8em
+
+.switch
+  :height 40px
+  :margin 0 0 20px
+  :float right
+  a
+    :font-size 1.5em
+    :display block
+    :width 110px
+    :height 20px
+    :float right
+    :text-align center
+    :text-decoration none
+    :color #888
+    :text-shadow 1px 1px 1px #fff
+    :padding 10px 0
+    :-webkit-box-shadow 1px 1px 1px #aaa
+    :background #eee
+    
+    &:hover
+      :color #555
+    
+    &.active
+      :background #4578B1
+      :text-shadow none
+      :color #CFE1FF
+      
+      &:hover
+        :color #BBCCEA
+    
+    &.popular
+      :width 99px
+
+      :-webkit-border-bottom-left-radius 10px
+      :-webkit-border-top-left-radius 10px
+    
+    &.upcoming
+      :width 110px
+      :-webkit-border-bottom-right-radius 10px
+      :-webkit-border-top-right-radius 10px

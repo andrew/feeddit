@@ -1,5 +1,5 @@
-atom_feed(:schema_date => 2008, :root_url => root_url, :url => digg_upcoming_url) do |feed|
-  feed.title 'Upcoming Digg Stories from Feeddit'
+atom_feed(:schema_date => 2008, :root_url => root_url, :url => (upcoming? ? digg_upcoming_feed_url : digg_popular_url)) do |feed|
+  feed.title "#{upcoming? ? 'Upcoming' : 'Popular'} Digg Stories from Feeddit"
   feed.updated Time.at(@stories.timestamp.to_i)
 
   for story in @stories
