@@ -11,7 +11,8 @@ ActionController::Routing::Routes.draw do |map|
   
   # legacy routes
   map.rss '/feed.rss', :controller => 'digg', :action => 'popular', :format => 'atom' 
-  map.atom '/feed.atom', :controller => 'digg', :action => 'popular', :format => 'atom' 
+  map.atom '/feed.atom', :controller => 'digg', :action => 'popular', :format => 'atom'
+  map.topics '/topics', :controller => 'digg', :action => 'topics'
   map.topic '/topics/:topic.atom', :controller => 'digg', :action => 'topic', :format => 'atom'
 
   map.with_options :controller => 'index' do |index|
