@@ -6,7 +6,7 @@ include FileUtils::Verbose
 
 def is_excluded(file)
   type = case
-  when file =~ /(404|500).html/
+  when file =~ /(index|404|500).html/
     true
   end
 end
