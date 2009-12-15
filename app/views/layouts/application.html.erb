@@ -10,6 +10,18 @@
 	<link rel="apple-touch-icon" href="/images/home-icon.png"/>
 	<link rel='alternate' type='application/rss+xml' title='Feeddit RSS' href='http://feeds.feedburner.com/Diggfeedr' />
 	<%= stylesheet_link_tag 'application' %>
+	<script type="text/javascript" charset="utf-8">
+	   // Google analtyics
+       var _gaq = _gaq || [];
+       _gaq.push(['_setAccount', '265870-14']);
+       _gaq.push(['_trackPageview']);
+
+       (function() {
+         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+       })();
+	</script>
 </head>
 <body>
 	<% if flash[:error] -%> 
@@ -48,18 +60,5 @@
 			<div class="right">Designed and Coded by <%= link_to "Andrew Nesbitt", "http://teabass.com" %></div>
 		</div>
 	</div>
-	<script type="text/javascript" src="http://include.reinvigorate.net/re_.js"></script>
-	<script type="text/javascript">
-	re_("w8e00-84gs0q669b");
-	</script>
-	<script type="text/javascript">
-    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-    </script>
-    <script type="text/javascript">
-    try {
-    var pageTracker = _gat._getTracker("UA-265870-14");
-    pageTracker._trackPageview();
-    } catch(err) {}</script>
 </body>
 </html>
