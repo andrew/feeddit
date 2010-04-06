@@ -40,4 +40,13 @@ Rails::Initializer.run do |config|
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
+
+  config.gem 'rack-rewrite', '~> 0.2.0'
+  require 'rack-rewrite'
+  config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
+    r301 %r{.*}, 'http://feeddit.com$&', :if => Proc.new {|rack_env|
+      rack_env['SERVER_NAME'] != 'budechalet.com'
+    }
+    r301 '/index.html', '/'
+  end
 end
