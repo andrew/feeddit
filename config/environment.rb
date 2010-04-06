@@ -45,7 +45,7 @@ Rails::Initializer.run do |config|
   require 'rack-rewrite'
   config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
     r301 %r{.*}, 'http://feeddit.com$&', :if => Proc.new {|rack_env|
-      rack_env['SERVER_NAME'] != 'budechalet.com'
+      rack_env['SERVER_NAME'] != 'feeddit.com'
     }
     r301 '/index.html', '/'
   end
