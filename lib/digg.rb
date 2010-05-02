@@ -26,8 +26,7 @@
 #  - refactor to not use class_eval
 
 require 'net/http'
-require 'rexml/document'
-require 'rexml/xpath'
+require 'nokogiri'
 require 'cgi'
 
 DIGG_API_URL = 'http://services.digg.com'
@@ -94,10 +93,10 @@ class Digg
                'User-Agent' => USER_AGENT,
                'Accept' => 'application/xml'
     end
-    xml = REXML::Document.new response.body
+    xml = Nokogiri::XML response.body
     return xml
   end
-  
+
   def assemble_url(path, arguments = {})
     uri = URI.parse(DIGG_API_URL + '/' + path)
     path = uri.path + assemble_arguments(arguments)
@@ -125,15 +124,15 @@ class Digg
           content = #{content_class}.new
           for attribute in #{content_class.upcase}_ATTRIBUTES
             if xml
-              content.send attribute.to_s + '=', xml.attributes[attribute.to_s]
+              content.send attribute.to_s + '=', xml[attribute.to_s]
             end
           end
           for element in #{content_class.upcase}_ELEMENTS
-            content.send element.to_s + '=', xml.elements[element.to_s].text
+            content.send element.to_s + '=', xml.children.at('//'+element.to_s).text
           end
           for type in #{content_class.upcase}_ELEMENTS_AS_OBJECTS
             klass = eval type.to_s.capitalize
-            content.send(type.to_s + '=', klass.populate_from_xml(REXML::XPath.first(xml, type.to_s)))
+            content.send(type.to_s + '=', klass.populate_from_xml(xml.xpath(type.to_s).first))
           end
           return content
         end
@@ -165,13 +164,13 @@ class Digg
         def self.populate_from_xml(xml)
           container = #{container_class}.new
           for attribute in #{container_class.upcase}_ATTRIBUTES
-            x = REXML::XPath.first xml, '//#{container_type}'
+            x = xml.xpath('//#{container_type}').first
             if x
               container.send attribute.to_s + '=', x.attributes[attribute.to_s]
             end
           end
           
-          REXML::XPath.each(xml, '//#{contents_type}') do |x|
+          xml.xpath('//#{contents_type}').each do |x|
             container << #{content_class}.populate_from_xml(x)
           end
           
