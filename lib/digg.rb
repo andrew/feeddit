@@ -25,7 +25,7 @@
 #  - load relational elements as proper objects
 #  - refactor to not use class_eval
 
-require 'net/http'
+require 'curb'
 require 'nokogiri'
 require 'cgi'
 
@@ -88,12 +88,11 @@ class Digg
   
   def fetch(path, arguments = {})
     host, port, path = assemble_url(path, arguments)    
-    response = Net::HTTP.start(host, port) do |http|
-      http.get path,
-               'User-Agent' => USER_AGENT,
-               'Accept' => 'application/xml'
+    response = Curl::Easy.perform("http://#{host}#{path}") do |curl|
+      curl.headers["User-Agent"] = "USER_AGENT"
+      curl.headers['Accept'] = 'application/xml'
     end
-    xml = Nokogiri::XML response.body
+    xml = Nokogiri::XML response.body_str
     return xml
   end
 

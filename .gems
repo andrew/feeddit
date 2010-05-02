@@ -2,3 +2,4 @@ rails
 haml
 rack-rewrite
 nokogiri
+curb
