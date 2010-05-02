@@ -3,20 +3,13 @@
     <%= link_to "Popular", digg_path, :class => "popular #{'active' unless upcoming?}" %> 
 </div>
 
-<p><%= link_to "All #{upcoming? ? 'Upcoming' : 'Popular'} Feed", (upcoming? ? digg_upcoming_feed_path : digg_popular_path ) %>
-</p>
+<p><%= link_to "All #{upcoming? ? 'Upcoming' : 'Popular'} Feed", (upcoming? ? digg_upcoming_feed_path : digg_popular_path), :onclick => "pageTracker._trackEvent('Feeds', 'Subscribe', 'All #{upcoming? ? 'Upcoming' : 'Popular'}', 'From Topics');" %></p>
 <h2><%= upcoming? ? 'Upcoming' : 'Popular' %> stories by topic</h2>
 
 <ul id='topics-list'>
 <% for topic in @topics %>
     <li>
-        <% if upcoming? %>
-            <%= link_to "<span>#{topic.name}</span>", digg_upcoming_topic_path(:topic => topic.short_name) %>
-        <% else %>
-            <%= link_to topic.name, digg_topic_path(:topic => topic.short_name) %>
-        <% end %>
+        <%= link_to topic.name, (upcoming? ? digg_upcoming_topic_path(:topic => topic.short_name) : digg_topic_path(:topic => topic.short_name)), :onclick => "pageTracker._trackEvent('Feeds', 'Subscribe', '#{upcoming? ? 'Upcoming ' : ''}#{topic.name}');" %>
     </li> 
 <% end %>
 </ul>
-
-<!-- :diggbar => params[:diggbar] -->
