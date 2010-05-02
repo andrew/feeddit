@@ -16,3 +16,12 @@ config.action_controller.perform_caching             = true
 
 # Disable delivery errors, bad email addresses will be ignored
 # config.action_mailer.raise_delivery_errors = false
+
+config.gem 'rack-rewrite', '~> 0.2.0'
+require 'rack-rewrite'
+config.middleware.insert_before(::Rack::Lock, ::Rack::Rewrite) do
+  r301 %r{.*}, 'http://feeddit.com$&', :if => Proc.new {|rack_env|
+    rack_env['SERVER_NAME'] != 'feeddit.com'
+  }
+  r301 '/index.html', '/'
+end
