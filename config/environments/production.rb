@@ -23,5 +23,11 @@ config.middleware.insert_before(::Rack::Lock, ::Rack::Rewrite) do
   r301 %r{.*}, 'http://feeddit.com$&', :if => Proc.new {|rack_env|
     rack_env['SERVER_NAME'] != 'feeddit.com'
   }
+  r301 '/digg/popular.atom', 'http://feeds.feedburner.com/Diggfeedr', :if => Proc.new {|rack_env|
+    rack_env['HTTP_USER_AGENT'] !~ /FeedBurner|FeedValidator/
+  }
   r301 '/index.html', '/'
+  r301 %r{^/feed(.*)}, '/digg/popular.atom'
+  r301 '/topics', '/digg'
+  r301 %r{^/topics/(.*).atom}, '/digg/topics/$1.atom'
 end
