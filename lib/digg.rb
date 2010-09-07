@@ -127,7 +127,7 @@ class Digg
             end
           end
           for element in #{content_class.upcase}_ELEMENTS
-            content.send element.to_s + '=', xml.children.at('//'+element.to_s).text
+            content.send element.to_s + '=', xml.at('./'+element.to_s).text
           end
           for type in #{content_class.upcase}_ELEMENTS_AS_OBJECTS
             klass = eval type.to_s.capitalize
